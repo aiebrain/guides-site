@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Claude Code × OpenClaw × Obsidian 설치 가이드 | AI 커머스 브레인</title>
+    <style>
+        :root { --bg:#0a0a0a; --card:#161616; --border:#2a2a2a; --text:#e0e0e0; --muted:#888; --accent:#4ade80; --accent2:#38bdf8; --code-bg:#1a1a2e; }
+        * { margin:0; padding:0; box-sizing:border-box; }
+        body { font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif; background:var(--bg); color:var(--text); line-height:1.7; }
+        .container { max-width:780px; margin:0 auto; padding:2rem 1.5rem; }
+        .back { display:inline-block; color:var(--accent); text-decoration:none; font-size:0.9rem; margin-bottom:1.5rem; }
+        .back:hover { text-decoration:underline; }
+        h1 { font-size:1.8rem; margin-bottom:0.5rem; line-height:1.3; }
+        h2 { font-size:1.35rem; margin-top:2.5rem; margin-bottom:0.75rem; padding-bottom:0.4rem; border-bottom:1px solid var(--border); color:var(--accent); }
+        h3 { font-size:1.1rem; margin-top:1.5rem; margin-bottom:0.5rem; }
+        h4 { font-size:1rem; margin-top:1.2rem; margin-bottom:0.4rem; color:var(--accent2); }
+        p { margin-bottom:0.75rem; }
+        a { color:var(--accent2); }
+        ul, ol { margin-bottom:0.75rem; padding-left:1.5rem; }
+        li { margin-bottom:0.3rem; }
+        table { width:100%; border-collapse:collapse; margin-bottom:1rem; font-size:0.9rem; }
+        th, td { padding:0.5rem 0.75rem; border:1px solid var(--border); text-align:left; }
+        th { background:var(--card); font-weight:600; }
+        td { background:#111; }
+        code { background:var(--code-bg); padding:0.15rem 0.4rem; border-radius:4px; font-size:0.88em; font-family:'SF Mono',Consolas,monospace; }
+        pre { background:var(--code-bg); border:1px solid var(--border); border-radius:8px; padding:1rem; overflow-x:auto; margin-bottom:1rem; }
+        pre code { background:none; padding:0; font-size:0.85rem; }
+        blockquote { border-left:3px solid var(--accent); padding:0.5rem 1rem; margin:0.75rem 0; background:rgba(74,222,128,0.05); border-radius:0 8px 8px 0; }
+        blockquote p { margin-bottom:0.25rem; }
+        hr { border:none; border-top:1px solid var(--border); margin:2rem 0; }
+        .footer { text-align:center; margin-top:3rem; padding-top:1rem; border-top:1px solid var(--border); color:var(--muted); font-size:0.85rem; }
+        .footer a { color:var(--accent); text-decoration:none; }
+        input[type="checkbox"] { margin-right:0.4rem; }
+        @media (max-width:600px) { .container{padding:1.25rem 1rem;} h1{font-size:1.4rem;} table{font-size:0.8rem;} }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="index.html" class="back">← 가이드 목록으로</a>
+        <h1>🦞 Claude Code × OpenClaw × Obsidian 설치 가이드</h1>
+<blockquote>
+<p><strong>완전 초보자를 위한 단계별 안내서</strong>
+<strong>작성일:</strong> 2026-03-04 | <strong>소요 시간:</strong> 약 30~45분 | <strong>대상:</strong> Mac / Windows</p>
+</blockquote>
+<hr>
+<h2>📌 개요</h2>
+<table>
+<thead>
+<tr>
+<th>도구</th>
+<th>설명</th>
+<th>비용</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Node.js</strong></td>
+<td>JavaScript 실행 환경. OpenClaw 동작에 필요</td>
+<td>무료</td>
+</tr>
+<tr>
+<td><strong>Claude Code</strong></td>
+<td>Anthropic AI 코딩 어시스턴트. 자연어로 코딩</td>
+<td>Pro $20/월</td>
+</tr>
+<tr>
+<td><strong>OpenClaw</strong></td>
+<td>오픈소스 AI 에이전트 플랫폼. 스킬, 멀티 모델, 메시징 연동</td>
+<td>무료</td>
+</tr>
+<tr>
+<td><strong>Obsidian</strong></td>
+<td>마크다운 노트 앱. &quot;제2의 뇌&quot;</td>
+<td>무료</td>
+</tr>
+</tbody></table>
+<h3>설치 순서</h3>
+<p>🟢 <strong>Step 0: Node.js</strong> → 🤖 <strong>Step 1: Claude Code</strong> → 🦞 <strong>Step 2: OpenClaw</strong> → 💎 <strong>Step 3: Obsidian</strong></p>
+<blockquote>
+<p>💡 OpenClaw은 Node.js 22+가 없으면 설치 불가. Claude Code 로그인을 먼저 완료하면 OpenClaw 온보딩이 편리.</p>
+</blockquote>
+<hr>
+<h2>🔐 사전 준비</h2>
+<h3>필요 계정</h3>
+<table>
+<thead>
+<tr>
+<th>서비스</th>
+<th>필요 여부</th>
+<th>비용</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Anthropic (Claude)</td>
+<td>필수</td>
+<td>Pro $20/월 또는 Max $100/월</td>
+</tr>
+<tr>
+<td>Obsidian 계정</td>
+<td>불필요</td>
+<td>무료</td>
+</tr>
+</tbody></table>
+<h3>시스템 요구사항</h3>
+<ul>
+<li>💻 macOS 12+ 또는 Windows 10/11 (64-bit)</li>
+<li>💾 디스크 공간 최소 2GB</li>
+<li>🌐 안정적인 인터넷 연결</li>
+</ul>
+<h3>Anthropic Pro/Max 구독</h3>
+<ol>
+<li><a href="https://claude.ai">claude.ai</a> → &quot;Sign Up&quot;</li>
+<li>이메일 인증 → 비밀번호 설정</li>
+<li>프로필 → &quot;Upgrade to Pro&quot; ($20/월 — 워크숍에는 충분)</li>
+<li>카드 정보 입력 → 구독 완료</li>
+</ol>
+<h3>터미널 여는 법</h3>
+<ul>
+<li>🍎 <strong>Mac:</strong> <code>Cmd + Space</code> → &quot;터미널&quot; → Enter</li>
+<li>🪟 <strong>Windows:</strong> 시작 → &quot;Terminal&quot; 검색 (또는 <code>Win + X</code> → PowerShell)</li>
+</ul>
+<hr>
+<h2>🪟 Windows 사전 설정 (Mac은 건너뛰기)</h2>
+<h3>A1. ExecutionPolicy 변경</h3>
+<pre><code class="language-powershell"># 관리자 PowerShell에서:
+Set-ExecutionPolicy RemoteSigned -Scope CurrentUser
+</code></pre>
+<blockquote>
+<p><code>Y</code> 입력. 외부 스크립트 실행 허용 (서명된 것만)</p>
+</blockquote>
+<h3>A2. 앱 실행 별칭 끄기</h3>
+<ul>
+<li><strong>Win 11:</strong> 설정 → 앱 → 고급 앱 설정 → 앱 실행 별칭</li>
+<li><strong>Win 10:</strong> 설정 → 앱 → 앱 실행 별칭</li>
+<li><code>node.exe</code>, <code>python.exe</code> → <strong>끄기</strong></li>
+</ul>
+<h3>A3. Git for Windows 설치</h3>
+<ol>
+<li><a href="https://git-scm.com">git-scm.com</a> → &quot;Download for Windows&quot;</li>
+<li>기본 설정으로 설치 마법사 진행</li>
+<li>확인: <code>git --version</code> → <code>git version 2.x.x</code></li>
+</ol>
+<hr>
+<h2>🟢 Step 0 — Node.js 설치</h2>
+<blockquote>
+<p>OpenClaw은 <strong>Node.js 22.12.0 이상</strong>에서만 동작합니다.</p>
+</blockquote>
+<h3>이미 설치 확인</h3>
+<pre><code class="language-bash">node --version    # v22.12.0 이상이면 건너뛰기
+</code></pre>
+<h3>🍎 Mac</h3>
+<p><strong>방법 1 (추천):</strong> <a href="https://nodejs.org">nodejs.org</a> → v22.x LTS .pkg 다운로드 → 설치
+<strong>방법 2:</strong> <code>brew install node@22</code></p>
+<h3>🪟 Windows</h3>
+<ol>
+<li><a href="https://nodejs.org">nodejs.org</a> → v22.x LTS .msi 다운로드</li>
+<li>설치 시 체크:<ul>
+<li>☑ &quot;Automatically install the necessary tools&quot;</li>
+<li>☑ &quot;Enable MAX_PATH limit override&quot;</li>
+</ul>
+</li>
+</ol>
+<h3>설치 확인 (⚠️ 터미널 새로 열기!)</h3>
+<pre><code class="language-bash">node --version    # v22.x.x
+npm --version     # 10.x.x
+</code></pre>
+<hr>
+<h2>🤖 Step 1 — Claude Code 설치</h2>
+<h3>🍎 Mac</h3>
+<pre><code class="language-bash"># 방법 1 (추천):
+curl -fsSL https://claude.ai/install.sh | bash
+
+# 방법 2:
+brew install --cask claude-code
+</code></pre>
+<h3>🪟 Windows</h3>
+<pre><code class="language-powershell"># 방법 1 (추천):
+irm https://claude.ai/install.ps1 | iex
+
+# 방법 2:
+winget install Anthropic.ClaudeCode
+</code></pre>
+<h3>설치 확인</h3>
+<pre><code class="language-bash">claude --version    # claude-code x.x.x
+</code></pre>
+<h3>로그인 (⚠️ 반드시 여기서 완료!)</h3>
+<ol>
+<li><code>claude</code> 입력 → 브라우저 자동 오픈</li>
+<li>Claude Pro/Max 계정으로 로그인</li>
+<li>돌아와서 대화 가능 확인</li>
+</ol>
+<blockquote>
+<p>💡 브라우저 안 열리면 <code>c</code> 키 → URL 복사</p>
+</blockquote>
+<h3>첫 실행 화면</h3>
+<table>
+<thead>
+<tr>
+<th>화면</th>
+<th>입력</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>이용약관</td>
+<td><code>y</code></td>
+</tr>
+<tr>
+<td>모델 선택</td>
+<td><code>Enter</code></td>
+</tr>
+<tr>
+<td>프로젝트 신뢰</td>
+<td><code>y</code></td>
+</tr>
+</tbody></table>
+<h3>건강 체크</h3>
+<pre><code class="language-bash">claude doctor    # 자동 진단
+</code></pre>
+<hr>
+<h2>🦞 Step 2 — OpenClaw 설치</h2>
+<h3>Node.js 버전 재확인</h3>
+<pre><code class="language-bash">node --version    # v22.12.0+ 필수!
+</code></pre>
+<h3>🍎 Mac</h3>
+<pre><code class="language-bash"># 방법 1 (추천):
+curl -fsSL https://openclaw.ai/install.sh | bash
+
+# 방법 2:
+npm install -g openclaw@latest
+</code></pre>
+<h3>🪟 Windows</h3>
+<pre><code class="language-powershell"># 방법 1 (관리자 PowerShell, 추천):
+iwr -useb https://openclaw.ai/install.ps1 | iex
+
+# 방법 2:
+npm install -g openclaw@latest
+</code></pre>
+<h3>온보딩 (초기 설정)</h3>
+<pre><code class="language-bash">openclaw onboard --install-daemon
+</code></pre>
+<h4>온보딩 5단계</h4>
+<table>
+<thead>
+<tr>
+<th>단계</th>
+<th>설명</th>
+<th>입력</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1. AI 모델/인증</td>
+<td>Anthropic API 키 선택</td>
+<td>Claude 계정 사용</td>
+</tr>
+<tr>
+<td>2. 워크스페이스</td>
+<td>기본 <code>~/.openclaw/workspace</code></td>
+<td>Enter</td>
+</tr>
+<tr>
+<td>3. 게이트웨이</td>
+<td>기본 포트 18789</td>
+<td>Enter</td>
+</tr>
+<tr>
+<td>4. 채널 연결</td>
+<td>WhatsApp/Telegram/Discord 등</td>
+<td>건너뛰기 가능</td>
+</tr>
+<tr>
+<td>5. 데몬 설치</td>
+<td>백그라운드 자동 실행</td>
+<td>진행</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p>💡 초보자는 QuickStart 모드 선택 → 기본값(Enter)으로 빠르게 진행</p>
+</blockquote>
+<h3>설치 확인</h3>
+<pre><code class="language-bash">openclaw gateway status    # → &quot;running&quot;
+openclaw doctor            # 전체 진단
+openclaw dashboard         # 웹 대시보드 (브라우저)
+</code></pre>
+<hr>
+<h2>💎 Step 3 — Obsidian 설치</h2>
+<h3>🍎 Mac</h3>
+<p><strong>방법 1 (추천):</strong> <a href="https://obsidian.md/download">obsidian.md/download</a> → .dmg → Applications로 드래그
+<strong>방법 2:</strong> <code>brew install --cask obsidian</code></p>
+<blockquote>
+<p>⚠️ &quot;개발자 확인 불가&quot; 경고 → 시스템 설정 → 개인정보 보호 → &quot;그래도 열기&quot;</p>
+</blockquote>
+<h3>🪟 Windows</h3>
+<ol>
+<li><a href="https://obsidian.md/download">obsidian.md/download</a> → .exe 다운로드</li>
+<li>설치 마법사 진행</li>
+</ol>
+<h3>보관함(Vault) 만들기</h3>
+<ol>
+<li>Obsidian 실행 → &quot;새 보관함 만들기&quot;</li>
+<li>이름 입력 (예: &quot;내 노트&quot;)</li>
+<li>저장 위치 선택 → &quot;만들기&quot;</li>
+</ol>
+<hr>
+<h2>✅ 설치 확인 체크리스트</h2>
+<h3>Step 0: Node.js</h3>
+<ul>
+<li><input disabled="" type="checkbox"> <code>node --version</code> → <strong>v22.12.0 이상</strong></li>
+<li><input disabled="" type="checkbox"> <code>npm --version</code> → <strong>10.x 이상</strong></li>
+</ul>
+<h3>Step 1: Claude Code</h3>
+<ul>
+<li><input disabled="" type="checkbox"> <code>claude --version</code> → 버전 번호 출력</li>
+<li><input disabled="" type="checkbox"> <code>claude doctor</code> → 문제 없음</li>
+<li><input disabled="" type="checkbox"> <code>claude</code> → 로그인 완료, 대화 가능</li>
+</ul>
+<h3>Step 2: OpenClaw</h3>
+<ul>
+<li><input disabled="" type="checkbox"> <code>openclaw gateway status</code> → <strong>running</strong></li>
+<li><input disabled="" type="checkbox"> <code>openclaw doctor</code> → 문제 없음</li>
+<li><input disabled="" type="checkbox"> <code>openclaw dashboard</code> → 브라우저 열림</li>
+</ul>
+<h3>Step 3: Obsidian</h3>
+<ul>
+<li><input disabled="" type="checkbox"> 앱 실행됨</li>
+<li><input disabled="" type="checkbox"> 보관함 생성 완료</li>
+<li><input disabled="" type="checkbox"> 새 노트 생성 가능 (<code>Cmd/Ctrl + N</code>)</li>
+</ul>
+<blockquote>
+<p>🎉 <strong>모든 항목 체크 → 설치 완료!</strong></p>
+</blockquote>
+<hr>
+<h2>🔧 트러블슈팅 / FAQ</h2>
+<h3>Q. <code>command not found</code> 오류</h3>
+<p>→ 터미널 닫고 <strong>새로 열어서</strong> 재시도. PATH 반영 문제.</p>
+<h3>Q. (Win) <code>node</code> 입력 시 Microsoft Store 열림</h3>
+<p>→ 설정 → 앱 실행 별칭 → Node.js 항목 끄기</p>
+<h3>Q. (Win) <code>npm install</code>이 10분 이상 걸림</h3>
+<pre><code class="language-powershell"># 관리자 PowerShell:
+Add-MpPreference -ExclusionProcess &quot;node.exe&quot;
+</code></pre>
+<h3>Q. (Win) 한글 경로 에러 (ENOENT)</h3>
+<pre><code class="language-powershell">mkdir C:\npm-global
+npm config set prefix &quot;C:\npm-global&quot;
+</code></pre>
+<p>→ 환경 변수 PATH에 <code>C:\npm-global</code> 추가</p>
+<h3>Q. 그래도 안 될 때</h3>
+<pre><code class="language-bash">node --version; claude --version; openclaw doctor
+</code></pre>
+<p>결과 + 빨간색 에러 메시지 전체를 텍스트로 복사해서 공유</p>
+<hr>
+<h2>📋 명령어 요약표</h2>
+<h3>설치 명령어</h3>
+<table>
+<thead>
+<tr>
+<th>도구</th>
+<th>🍎 Mac</th>
+<th>🪟 Windows</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Node.js</td>
+<td>nodejs.org (.pkg) 또는 <code>brew install node@22</code></td>
+<td>nodejs.org (.msi)</td>
+</tr>
+<tr>
+<td>Claude Code</td>
+<td><code>curl -fsSL https://claude.ai/install.sh | bash</code></td>
+<td><code>irm https://claude.ai/install.ps1 | iex</code></td>
+</tr>
+<tr>
+<td>OpenClaw</td>
+<td><code>curl -fsSL https://openclaw.ai/install.sh | bash</code></td>
+<td><code>iwr -useb https://openclaw.ai/install.ps1 | iex</code></td>
+</tr>
+<tr>
+<td>Obsidian</td>
+<td>obsidian.md (.dmg) 또는 <code>brew install --cask obsidian</code></td>
+<td>obsidian.md (.exe)</td>
+</tr>
+</tbody></table>
+<h3>확인 명령어</h3>
+<table>
+<thead>
+<tr>
+<th>용도</th>
+<th>명령어</th>
+<th>기대 결과</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Node.js</td>
+<td><code>node --version</code></td>
+<td>v22.12.0+</td>
+</tr>
+<tr>
+<td>npm</td>
+<td><code>npm --version</code></td>
+<td>10.x+</td>
+</tr>
+<tr>
+<td>Claude Code</td>
+<td><code>claude --version</code></td>
+<td>버전 출력</td>
+</tr>
+<tr>
+<td>Claude 진단</td>
+<td><code>claude doctor</code></td>
+<td>문제 없음</td>
+</tr>
+<tr>
+<td>OpenClaw 상태</td>
+<td><code>openclaw gateway status</code></td>
+<td>running</td>
+</tr>
+<tr>
+<td>OpenClaw 진단</td>
+<td><code>openclaw doctor</code></td>
+<td>문제 없음</td>
+</tr>
+<tr>
+<td>대시보드</td>
+<td><code>openclaw dashboard</code></td>
+<td>브라우저 열림</td>
+</tr>
+</tbody></table>
+<h3>Windows 전용</h3>
+<table>
+<thead>
+<tr>
+<th>용도</th>
+<th>명령어</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>ExecutionPolicy 변경</td>
+<td><code>Set-ExecutionPolicy RemoteSigned -Scope CurrentUser</code></td>
+</tr>
+<tr>
+<td>Defender 예외</td>
+<td><code>Add-MpPreference -ExclusionProcess &quot;node.exe&quot;</code></td>
+</tr>
+<tr>
+<td>npm 경로 변경</td>
+<td><code>npm config set prefix &quot;C:\npm-global&quot;</code></td>
+</tr>
+</tbody></table>
+<hr>
+<h2>🔗 참고 자료</h2>
+<table>
+<thead>
+<tr>
+<th>도구</th>
+<th>공식 문서</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Node.js</td>
+<td><a href="https://nodejs.org/docs">nodejs.org/docs</a></td>
+</tr>
+<tr>
+<td>Claude Code</td>
+<td><a href="https://docs.anthropic.com/en/docs/claude-code">docs.anthropic.com</a></td>
+</tr>
+<tr>
+<td>OpenClaw</td>
+<td><a href="https://docs.openclaw.ai">docs.openclaw.ai</a></td>
+</tr>
+<tr>
+<td>Obsidian</td>
+<td><a href="https://help.obsidian.md">help.obsidian.md</a></td>
+</tr>
+</tbody></table>
+<hr>
+<h2>🔗 관련 노트</h2>
+<ul>
+<li>Claude Code × Antigravity 설치 가이드</li>
+<li>AI 도구 모음</li>
+</ul>
+<p>#가이드 #ClaudeCode #OpenClaw #Obsidian #설치 #AI에이전트</p>
+
+        <div class="footer">
+            <p>Made by <a href="https://github.com/aiebrain">@aiebrain</a> · <a href="https://www.youtube.com/@aiebrain">AI 커머스 브레인</a></p>
+        </div>
+    </div>
+</body>
+</html>
