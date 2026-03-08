@@ -221,11 +221,53 @@ AI가 기억 내용을 텍스트로 출력
 
     <ol>
         <li><a href="https://claude.com/import-memory" target="_blank">claude.com/import-memory</a> 접속</li>
-        <li>앤트로픽 제공 프롬프트 복사</li>
+        <li>앤트로픽 제공 <strong>공식 영문 프롬프트</strong> 복사 (아래 참고)</li>
         <li>ChatGPT / Gemini 채팅창에 붙여넣기 → 결과 복사</li>
         <li>Claude Settings → Capabilities → Memory에 붙여넣기</li>
         <li>최대 24시간 내 자동 반영</li>
     </ol>
+
+    <h3>📄 Claude 공식 제공 프롬프트 (영문 원본)</h3>
+    <p style="color:var(--muted);font-size:0.9rem;">claude.com/import-memory에서 제공하는 앤트로픽 공식 프롬프트입니다. ChatGPT·Gemini에 그대로 붙여넣으세요.</p>
+
+    <pre><code>I'm moving to another service and need to export my data. List every memory you have stored about me, as well as any context you've learned about me from past conversations. Output everything in a single code block so I can easily copy it.
+
+Format each entry as: [date saved, if available] - memory content.
+
+Make sure to cover all of the following — preserve my words verbatim where possible:
+- Instructions I've given you about how to respond (tone, format, style, 'always do X', 'never do Y').
+- Personal details: name, location, job, family, interests.
+- Projects, goals, and recurring topics.
+- Tools, languages, and frameworks I use.
+- Preferences and corrections I've made to your behavior.
+- Any other stored context not covered above.
+
+Do not summarize, group, or omit any entries. After the code block, confirm whether that is the complete set or if any remain.</code></pre>
+
+    <div class="tip-box">
+        <strong>💡 프롬프트 설계 포인트 3가지</strong><br>
+        <ul style="margin-top:0.5rem;margin-bottom:0;">
+            <li><strong>코드 블록 강제</strong> — "Output everything in a single code block" : 결과를 한 번에 복사하기 쉽게</li>
+            <li><strong>날짜 포함 형식</strong> — "[date saved, if available]" : 언제 저장된 기억인지 파악 가능</li>
+            <li><strong>생략·요약 금지</strong> — "Do not summarize, group, or omit" : 기억 누락 방지 + 완전성 확인 요청</li>
+        </ul>
+    </div>
+
+    <h3>📄 한국어 버전 (같은 효과)</h3>
+    <p style="color:var(--muted);font-size:0.9rem;">영어가 불편하다면 아래 한국어 버전을 사용하세요. 결과는 동일합니다.</p>
+
+    <pre><code>지금까지 나와의 대화에서 학습하거나 기억한 내용을 전부 출력해줘.
+
+다음 항목을 빠짐없이 포함해:
+- 내 말투, 선호하는 응답 스타일, 포맷 방식
+- 내 이름, 직업, 위치, 관심사 등 개인 정보
+- 진행 중인 프로젝트, 목표, 자주 다루는 주제
+- 내가 자주 쓰는 도구, 언어, 프레임워크
+- 내가 수정 요청했던 행동 방식 (항상 해줘/하지 마 등)
+- 그 외 학습된 모든 맥락
+
+요약하거나 생략하지 말고 전부 코드블록 하나에 담아줘.
+마지막에 빠진 내용이 있는지 확인해줘.</code></pre>
 
     <div class="tip-box">
         <strong>💡 병합 방식:</strong> 기존 Claude 메모리를 덮어쓰지 않습니다. 기존 + 새 내용이 합쳐집니다. ✅
