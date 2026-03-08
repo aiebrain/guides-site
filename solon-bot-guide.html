@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>솔론봇 만들기 — 카카오톡 AI 챗봇 완전 가이드 | AI 커머스 브레인</title>
+    <title>이브레인봇 사용법 완전 가이드 | AI 커머스 브레인</title>
     <style>
         :root { --bg:#0a0a0a; --card:#161616; --border:#2a2a2a; --text:#e0e0e0; --muted:#888; --accent:#4ade80; --accent2:#38bdf8; --code-bg:#1a1a2e; }
         * { margin:0; padding:0; box-sizing:border-box; }
@@ -11,309 +11,281 @@
         .container { max-width:780px; margin:0 auto; padding:2rem 1.5rem; }
         h1 { font-size:1.8rem; margin-bottom:0.5rem; line-height:1.3; }
         h2 { font-size:1.35rem; margin-top:2.5rem; margin-bottom:0.75rem; padding-bottom:0.4rem; border-bottom:1px solid var(--border); color:var(--accent); }
-        h3 { font-size:1.1rem; margin-top:1.5rem; margin-bottom:0.5rem; }
-        h4 { font-size:1rem; margin-top:1.2rem; margin-bottom:0.4rem; color:var(--accent2); }
+        h3 { font-size:1.1rem; margin-top:1.5rem; margin-bottom:0.5rem; color:var(--accent2); }
         p { margin-bottom:0.75rem; }
         a { color:var(--accent2); }
         ul, ol { margin-bottom:0.75rem; padding-left:1.5rem; }
-        li { margin-bottom:0.3rem; }
+        li { margin-bottom:0.4rem; }
         table { width:100%; border-collapse:collapse; margin-bottom:1rem; font-size:0.9rem; }
-        th, td { padding:0.5rem 0.75rem; border:1px solid var(--border); text-align:left; }
-        th { background:var(--card); font-weight:600; }
+        th, td { padding:0.55rem 0.75rem; border:1px solid var(--border); text-align:left; vertical-align:top; }
+        th { background:var(--card); font-weight:600; color:var(--accent); }
         td { background:#111; }
-        code { background:var(--code-bg); padding:0.15rem 0.4rem; border-radius:4px; font-size:0.88em; font-family:'SF Mono',Consolas,monospace; }
-        pre { background:var(--code-bg); border:1px solid var(--border); border-radius:8px; padding:1rem; overflow-x:auto; margin-bottom:1rem; }
-        pre code { background:none; padding:0; font-size:0.85rem; }
+        code { background:var(--code-bg); padding:0.15rem 0.45rem; border-radius:4px; font-size:0.9em; font-family:'SF Mono',Consolas,monospace; color:#a5f3fc; }
+        pre { background:var(--code-bg); border:1px solid var(--border); border-radius:8px; padding:1rem 1.25rem; overflow-x:auto; margin-bottom:1rem; }
+        pre code { background:none; padding:0; color:#e0e0e0; font-size:0.85rem; }
         blockquote { border-left:3px solid var(--accent); padding:0.5rem 1rem; margin:0.75rem 0; background:rgba(74,222,128,0.05); border-radius:0 8px 8px 0; }
-        blockquote p { margin-bottom:0.25rem; }
         hr { border:none; border-top:1px solid var(--border); margin:2rem 0; }
-        .step-box { background:var(--card); border:1px solid var(--border); border-radius:12px; padding:1.5rem; margin-bottom:1.5rem; }
-        .step-num { display:inline-block; background:var(--accent); color:#000; font-weight:700; font-size:0.85rem; padding:0.15rem 0.6rem; border-radius:99px; margin-bottom:0.75rem; }
-        .step-box h3 { margin-top:0; }
-        .tip-box { background:rgba(56,189,248,0.05); border:1px solid rgba(56,189,248,0.2); border-radius:8px; padding:0.75rem 1rem; margin:0.75rem 0; }
-        .tip-box strong { color:var(--accent2); }
-        .warn-box { background:rgba(251,191,36,0.05); border:1px solid rgba(251,191,36,0.2); border-radius:8px; padding:0.75rem 1rem; margin:0.75rem 0; }
-        .warn-box strong { color:#fbbf24; }
-        .cta-box { background:linear-gradient(135deg,#1a2e1a 0%,#162535 100%); border:1px solid var(--accent); border-radius:12px; padding:2rem; text-align:center; margin-top:2.5rem; }
-        .cta-box h2 { font-size:1.3rem; margin-bottom:0.5rem; color:#fff; border:none; }
-        .cta-box p { color:var(--muted); font-size:0.95rem; margin-bottom:1.25rem; }
-        .cta-buttons { display:flex; gap:1rem; justify-content:center; flex-wrap:wrap; }
-        .btn-cta { display:inline-block; font-weight:600; text-decoration:none; padding:0.5rem 1.25rem; border-radius:8px; font-size:0.9rem; transition:opacity 0.2s; }
-        .btn-yt { background:#ff0000; color:#fff; }
-        .btn-kakao { background:#FAE100; color:#3A1D1D; }
-        .btn-cta:hover { opacity:0.85; }
-        .footer { text-align:center; margin-top:3rem; padding-top:1rem; border-top:1px solid var(--border); color:var(--muted); font-size:0.85rem; }
-        .footer a { color:var(--accent); text-decoration:none; }
         .badge { display:inline-block; font-size:0.75rem; font-weight:600; padding:0.2rem 0.6rem; border-radius:99px; margin-right:0.3rem; }
         .badge-green { background:rgba(74,222,128,0.15); color:var(--accent); border:1px solid rgba(74,222,128,0.3); }
         .badge-blue { background:rgba(56,189,248,0.15); color:var(--accent2); border:1px solid rgba(56,189,248,0.3); }
-        .checklist { list-style:none; padding-left:0; }
-        .checklist li { padding:0.3rem 0; display:flex; align-items:flex-start; gap:0.5rem; }
-        .checklist li::before { content:"☐"; color:var(--accent); font-size:1.1rem; flex-shrink:0; }
+        .cmd-box { background:#0d1117; border:1px solid #30363d; border-radius:10px; padding:1rem 1.25rem; margin:0.75rem 0; font-family:'SF Mono',Consolas,monospace; font-size:0.95rem; }
+        .cmd-label { font-size:0.75rem; color:var(--muted); margin-bottom:0.4rem; text-transform:uppercase; letter-spacing:0.05em; }
+        .cmd-text { color:var(--accent2); }
+        .cmd-result { color:#9ca3af; margin-top:0.5rem; font-size:0.85rem; border-top:1px solid #30363d; padding-top:0.5rem; }
+        .example-card { background:var(--card); border:1px solid var(--border); border-radius:12px; padding:1.25rem; margin-bottom:1rem; }
+        .example-card .q { color:var(--accent2); font-weight:600; margin-bottom:0.5rem; font-size:0.95rem; }
+        .example-card .a { color:var(--text); font-size:0.9rem; line-height:1.6; background:#0d1117; padding:0.75rem 1rem; border-radius:8px; border-left:3px solid var(--accent); white-space:pre-line; }
+        .tip-box { background:rgba(56,189,248,0.05); border:1px solid rgba(56,189,248,0.2); border-radius:8px; padding:0.75rem 1rem; margin:0.75rem 0; font-size:0.9rem; }
+        .tip-box strong { color:var(--accent2); }
+        .warn-box { background:rgba(251,191,36,0.05); border:1px solid rgba(251,191,36,0.2); border-radius:8px; padding:0.75rem 1rem; margin:0.75rem 0; font-size:0.9rem; }
+        .warn-box strong { color:#fbbf24; }
+        .cta-box { background:linear-gradient(135deg,#1a2e1a 0%,#162535 100%); border:1px solid var(--accent); border-radius:12px; padding:2rem; text-align:center; margin-top:2.5rem; }
+        .cta-box h2 { font-size:1.2rem; margin-bottom:0.5rem; color:#fff; border:none; margin-top:0; }
+        .cta-box p { color:var(--muted); font-size:0.9rem; margin-bottom:1.25rem; }
+        .cta-buttons { display:flex; gap:1rem; justify-content:center; flex-wrap:wrap; }
+        .btn-cta { display:inline-block; font-weight:600; text-decoration:none; padding:0.5rem 1.25rem; border-radius:8px; font-size:0.9rem; }
+        .btn-yt { background:#ff0000; color:#fff; }
+        .btn-kakao { background:#FAE100; color:#3A1D1D; }
+        .footer { text-align:center; margin-top:3rem; padding-top:1rem; border-top:1px solid var(--border); color:var(--muted); font-size:0.85rem; }
+        .footer a { color:var(--accent); text-decoration:none; }
         @keyframes pulse { 0%,100%{opacity:1;} 50%{opacity:0.3;} }
-        @media (max-width:600px) { .container{padding:1.25rem 1rem;} h1{font-size:1.4rem;} table{font-size:0.8rem;} }
+        @media (max-width:600px) { .container{padding:1.25rem 1rem;} h1{font-size:1.4rem;} table{font-size:0.82rem;} }
     </style>
 </head>
 <body>
 <div class="container">
 
-    <!-- 상단 채널 배너 -->
+    <!-- 채널 배너 -->
     <div style="background:linear-gradient(135deg,#0f1f0f 0%,#0f1a25 100%);border:1px solid var(--accent);border-radius:14px;padding:1.4rem 1.5rem;margin-bottom:1.75rem;">
-        <div style="display:flex;align-items:center;gap:0.5rem;margin-bottom:1rem;">
+        <div style="display:flex;align-items:center;gap:0.5rem;margin-bottom:0.75rem;">
             <span style="display:inline-block;width:8px;height:8px;background:var(--accent);border-radius:50%;animation:pulse 1.8s infinite;"></span>
             <span style="color:var(--accent);font-size:0.8rem;font-weight:600;letter-spacing:0.05em;">AI 커머스 브레인 — 실전 AI 활용 커뮤니티</span>
         </div>
-        <p style="color:var(--text);font-size:1rem;font-weight:600;margin-bottom:1.1rem;">AI로 매출·생산성 올리는 셀러들이 모인 곳 👇</p>
+        <p style="color:var(--text);font-size:1rem;font-weight:600;margin-bottom:1rem;">AI로 매출·생산성 올리는 셀러들이 모인 곳 👇</p>
         <div style="display:flex;gap:0.75rem;flex-wrap:wrap;">
-            <a href="https://www.youtube.com/@aiebrain" target="_blank"
-               style="display:inline-flex;align-items:center;gap:0.5rem;background:#ff0000;color:#fff;font-weight:700;font-size:0.95rem;padding:0.6rem 1.3rem;border-radius:10px;text-decoration:none;box-shadow:0 0 14px rgba(255,0,0,0.35);transition:all 0.2s;"
-               onmouseover="this.style.boxShadow='0 0 22px rgba(255,0,0,0.6)';this.style.transform='translateY(-1px)'" onmouseout="this.style.boxShadow='0 0 14px rgba(255,0,0,0.35)';this.style.transform='translateY(0)'">
-                ▶ 유튜브 구독하기
-            </a>
-            <a href="https://open.kakao.com/o/gfNHYBwh" target="_blank"
-               style="display:inline-flex;align-items:center;gap:0.5rem;background:#FAE100;color:#3A1D1D;font-weight:700;font-size:0.95rem;padding:0.6rem 1.3rem;border-radius:10px;text-decoration:none;box-shadow:0 0 14px rgba(250,225,0,0.3);transition:all 0.2s;"
-               onmouseover="this.style.boxShadow='0 0 22px rgba(250,225,0,0.55)';this.style.transform='translateY(-1px)'" onmouseout="this.style.boxShadow='0 0 14px rgba(250,225,0,0.3)';this.style.transform='translateY(0)'">
-                💬 오픈채팅방 참여
-            </a>
+            <a href="https://www.youtube.com/@aiebrain" target="_blank" style="display:inline-flex;align-items:center;gap:0.5rem;background:#ff0000;color:#fff;font-weight:700;font-size:0.9rem;padding:0.55rem 1.2rem;border-radius:10px;text-decoration:none;">▶ 유튜브 구독</a>
+            <a href="https://open.kakao.com/o/gfNHYBwh" target="_blank" style="display:inline-flex;align-items:center;gap:0.5rem;background:#FAE100;color:#3A1D1D;font-weight:700;font-size:0.9rem;padding:0.55rem 1.2rem;border-radius:10px;text-decoration:none;">💬 오픈채팅방 참여</a>
         </div>
-        <p style="color:var(--muted);font-size:0.8rem;margin-top:0.9rem;margin-bottom:0;">📌 가이드 질문·AI 활용 노하우 공유 · 무료 입장</p>
     </div>
 
-    <h1>🤖 솔론봇 만들기 — 카카오톡 AI 챗봇 완전 가이드</h1>
-
-    <blockquote>
-        <p><strong>문서 버전:</strong> v1.0 &nbsp;|&nbsp; <strong>작성일:</strong> 2026-03-08 &nbsp;|&nbsp; <strong>대상:</strong> 안드로이드 사용자 · 카카오톡 오픈채팅 운영자</p>
-    </blockquote>
-
-    <p style="margin-top:0.75rem;">
-        <span class="badge badge-green">안드로이드</span>
-        <span class="badge badge-blue">Gemini API</span>
-        <span class="badge badge-green">메신저봇R</span>
-        <span class="badge badge-blue">무료</span>
+    <h1>🤖 이브레인봇 사용법 완전 가이드</h1>
+    <p style="color:var(--muted);margin-top:0.4rem;">카카오톡 오픈채팅방 AI 봇 · Gemini 2.5 Flash 기반</p>
+    <p style="margin-top:0.5rem;">
+        <span class="badge badge-green">AI 챗봇</span>
+        <span class="badge badge-blue">URL 자동요약</span>
+        <span class="badge badge-green">이커머스 특화</span>
     </p>
 
     <hr>
 
-    <h2>📌 솔론봇이란?</h2>
-
-    <p>카카오톡 오픈채팅방에 참여하여 <strong>URL을 자동 요약</strong>하고 <strong>AI 질문에 응답</strong>하는 챗봇입니다.</p>
-
-    <table>
-        <thead><tr><th>항목</th><th>내용</th></tr></thead>
-        <tbody>
-            <tr><td>필요 기기</td><td>안드로이드 스마트폰 (전용 기기 권장)</td></tr>
-            <tr><td>필요 계정</td><td>카카오톡 부계정 + Google 계정</td></tr>
-            <tr><td>AI 엔진</td><td>Google Gemini API (무료)</td></tr>
-            <tr><td>서버 필요 여부</td><td>❌ 불필요 (폰이 서버 역할)</td></tr>
-            <tr><td>비용</td><td>Gemini 무료 티어 활용 시 0원</td></tr>
-        </tbody>
-    </table>
-
-    <h2>🔄 동작 흐름</h2>
-
-    <pre><code>채팅방에 URL 또는 메시지 입력
-    ↓
-카카오톡 알림 발생
-    ↓
-메신저봇R이 알림 감지
-    ↓
-JavaScript 스크립트 실행
-    ↓
-Gemini API 직접 호출
-    ↓
-AI 응답 → 카카오톡 채팅방에 전송 ✅</code></pre>
+    <h2>📌 이브레인봇이란?</h2>
+    <p>카카오톡 오픈채팅방에서 동작하는 AI 어시스턴트입니다. <strong>링크 자동 요약</strong>과 <strong>AI 질문 답변</strong> 두 가지 기능을 제공합니다. 이커머스·마케팅·AI 도구에 특화된 구체적 답변을 드립니다.</p>
 
     <hr>
 
-    <h2>🛠️ 사전 준비</h2>
+    <h2>🎮 기본 사용법</h2>
 
-    <ul class="checklist">
-        <li>안드로이드 기기 준비 (상시 전원 연결)</li>
-        <li>카카오톡 부계정 생성</li>
-        <li>Google AI Studio에서 Gemini API 키 발급</li>
-        <li>메신저봇R 앱 설치</li>
-    </ul>
+    <table>
+        <thead>
+            <tr><th>기능</th><th>사용법</th><th>설명</th></tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><strong>AI 질문</strong></td>
+                <td><code>/이브레인봇 [질문 내용]</code></td>
+                <td>무엇이든 질문 가능. 이커머스·AI 관련 구체적 답변 제공</td>
+            </tr>
+            <tr>
+                <td><strong>URL 요약</strong></td>
+                <td>링크만 붙여넣기</td>
+                <td>자동으로 핵심 내용 3~4줄 요약</td>
+            </tr>
+            <tr>
+                <td><strong>도움말</strong></td>
+                <td><code>/이브레인봇</code></td>
+                <td>사용법 안내 출력</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="warn-box">
+        <strong>⚠️ 주의:</strong> <code>/이브레인봇</code> 앞에 반드시 <strong>/</strong> 슬래시가 있어야 합니다. 띄어쓰기 없이 붙여서 입력하세요.
+    </div>
+
+    <hr>
+
+    <h2>💬 실전 활용 예시</h2>
+
+    <h3>① 이커머스 · 쿠팡 관련 질문</h3>
+
+    <div class="example-card">
+        <div class="q">입력: /이브레인봇 쿠팡 상품 상위노출 방법 알려줘</div>
+        <div class="a">쿠팡 상위노출 핵심 방법:
+
+① 로켓배송 등록 — 로켓 상품이 검색 우선순위 높음
+② 판매량 축적 — 초기 10~30개 리뷰가 노출에 결정적
+③ 키워드 최적화 — 상품명 앞부분에 주요 키워드 배치 (40자 이내)
+④ 가격 경쟁력 — 카테고리 평균가 ±5% 이내 유지
+⑤ 클릭률(CTR) — 썸네일 첫 이미지가 흰 배경 + 상품 단독 구도
+⑥ 광고(CPC) — 초기 노출 확보 후 유기 노출로 전환 전략</div>
+    </div>
+
+    <div class="example-card">
+        <div class="q">입력: /이브레인봇 쿠팡 리뷰 답변을 AI로 자동화하는 방법은?</div>
+        <div class="a">쿠팡 리뷰 AI 자동화 방법:
+
+① ChatGPT/Claude 프롬프트 작성
+   — "다음 리뷰에 감사하고 공감하는 답변 3줄로 작성해줘: [리뷰 내용]"
+② 구글 시트 + Apps Script 조합
+   — 리뷰 내용을 시트에 붙여넣기 → API 자동 호출 → 답변 생성
+③ 쿠팡 Wing API 활용 (판매자 API)
+   — 리뷰 목록 자동 수집 가능, 답변 등록은 수동 필요
+④ 현실적 추천: Claude 프롬프트 저장해두고 복붙 반자동화
+   — 완전 자동보다 품질 높고 계정 정책 안전</div>
+    </div>
+
+    <h3>② AI 도구 비교 질문</h3>
+
+    <div class="example-card">
+        <div class="q">입력: /이브레인봇 ChatGPT와 Claude 어떤 게 더 나아?</div>
+        <div class="a">용도별 선택 가이드:
+
+📝 글쓰기·카피·문서 작성 → Claude (자연스러운 한국어, 긴 문맥 유지 탁월)
+💻 코딩·개발·디버깅 → Claude Code 또는 ChatGPT Codex
+🔍 실시간 웹 검색 필요 → ChatGPT (Browse 기능 포함)
+📊 데이터 분석·Excel → ChatGPT (Code Interpreter)
+🛒 이커머스 상세페이지·상품명 → Claude (톤 일관성 우수)
+🖼️ 이미지 생성 → ChatGPT (DALL-E 3 내장)
+
+결론: 텍스트 작업은 Claude, 이미지/검색 필요 시 ChatGPT</div>
+    </div>
+
+    <h3>③ URL 자동 요약</h3>
+
+    <div class="cmd-box">
+        <div class="cmd-label">채팅창 입력 (URL만 붙여넣기)</div>
+        <div class="cmd-text">https://www.youtube.com/watch?v=Oaw0mrzZOsY</div>
+        <div class="cmd-result">↓ 봇 자동 응답
+
+youtube(https://www.youtube.com/watch?v=...) 에 대한 사이트 요약입니다:
+
+👉[OpenClaw AI 에이전트 활용법 | AI 커머스 브레인]
+🎯 OpenClaw를 활용해 클로드 AI와 협업하는 방법을 단계별로 설명합니다.
+💡 메신저봇R과 Gemini API를 연동해 카카오톡 자동화 봇을 구성할 수 있습니다.
+📊 실제 셀러들이 AI로 업무 시간을 주당 10시간 이상 단축한 사례를 소개합니다.</div>
+    </div>
+
+    <h3>④ 마케팅 · 콘텐츠 질문</h3>
+
+    <div class="example-card">
+        <div class="q">입력: /이브레인봇 스마트스토어 상세페이지 구성 방법 알려줘</div>
+        <div class="a">스마트스토어 상세페이지 핵심 구성 순서:
+
+① 상단 후킹 이미지 (3초 안에 구매욕 자극)
+   — "이 제품이 필요한 사람" 공감 카피 + 강렬한 비포/애프터
+② 문제 제기 (고객 페인포인트)
+   — "혹시 이런 경험 있으신가요?" 형식
+③ 제품 핵심 기능 3가지 (불릿 포인트)
+   — 기능 나열 X, 해결되는 문제로 표현
+④ 신뢰 섹션 (리뷰 캡처 or 수치 데이터)
+   — "구매자 98%가 재구매", "판매 3만개 돌파"
+⑤ CTA (구매 유도)
+   — "지금 주문하면 오늘 출고", 수량 한정 강조</div>
+    </div>
+
+    <h3>⑤ 최신 AI 트렌드 질문</h3>
+
+    <div class="example-card">
+        <div class="q">입력: /이브레인봇 2026년 AI 에이전트 트렌드 요약해줘</div>
+        <div class="a">2026년 AI 에이전트 핵심 트렌드:
+
+① 멀티 에이전트 협업 — 여러 AI가 역할 분담해 복잡한 업무 처리
+② 온디바이스 AI 확산 — 클라우드 없이 폰/PC에서 직접 실행 (Gemini Nano 등)
+③ 에이전틱 코딩 — Claude Code, Codex가 전체 앱을 혼자 개발
+④ 실시간 웹 통합 — Grok(X 데이터), Perplexity 등 실시간 정보 강점
+⑤ 이커머스 자동화 — 상품 등록·가격 모니터링·CS 응대 전 과정 AI화
+⑥ AI 비용 급락 — Gemini Flash, Claude Haiku 등 저비용 모델로 대중화</div>
+    </div>
+
+    <hr>
+
+    <h2>💡 활용 팁</h2>
+
+    <h3>더 좋은 답변 받는 법</h3>
+
+    <table>
+        <thead><tr><th>❌ 이렇게 하면</th><th>✅ 이렇게 바꾸면</th></tr></thead>
+        <tbody>
+            <tr>
+                <td><code>/이브레인봇 마케팅 방법</code></td>
+                <td><code>/이브레인봇 월 300만원 매출 쿠팡 셀러의 SNS 마케팅 방법 구체적으로</code></td>
+            </tr>
+            <tr>
+                <td><code>/이브레인봇 AI 알려줘</code></td>
+                <td><code>/이브레인봇 초보자가 Claude를 업무에 바로 쓸 수 있는 방법 5가지</code></td>
+            </tr>
+            <tr>
+                <td><code>/이브레인봇 상품명 써줘</code></td>
+                <td><code>/이브레인봇 여성 30대 타겟, 보습 기능 강조한 핸드크림 쿠팡 상품명 5개 써줘</code></td>
+            </tr>
+        </tbody>
+    </table>
 
     <div class="tip-box">
-        <strong>💡 Gemini API 키 발급:</strong> <a href="https://aistudio.google.com" target="_blank">aistudio.google.com</a> → 로그인 → Get API Key → Create API Key
+        <strong>💡 Tip:</strong> 타겟, 상황, 목적을 구체적으로 쓸수록 훨씬 실용적인 답변이 나옵니다.
     </div>
 
-    <hr>
-
-    <h2>📦 설치 및 설정</h2>
-
-    <div class="step-box">
-        <div class="step-num">Step 1</div>
-        <h3>메신저봇R 설치 및 권한 설정</h3>
-        <ol>
-            <li>플레이스토어에서 <strong>메신저봇R</strong> 검색 후 설치</li>
-            <li>앱 실행 → 알림 읽기 권한 허용</li>
-            <li>설정 → 접근성 → 메신저봇R 활성화</li>
-            <li>카카오톡 설정 → 알림 → 모든 알림 표시 ON</li>
-        </ol>
-    </div>
-
-    <div class="step-box">
-        <div class="step-num">Step 2</div>
-        <h3>봇 생성</h3>
-        <ol>
-            <li>메신저봇R 앱 하단 <strong>+ 버튼</strong> → 봇 이름 입력</li>
-            <li><strong>레거시 API 사용</strong> 체크 ✅</li>
-            <li>확인 → 스크립트 편집 화면 진입</li>
-        </ol>
-        <div class="warn-box">
-            <strong>⚠️ 주의:</strong> "통합된 매개변수" 체크 해제. "레거시 API"만 체크하세요.
-        </div>
-    </div>
-
-    <div class="step-box">
-        <div class="step-num">Step 3</div>
-        <h3>스크립트 붙여넣기</h3>
-        <p>기존 코드 전체 삭제 후 아래 코드 붙여넣기.</p>
-        <p><strong>첫 번째 줄 API 키를 발급받은 키로 교체하세요.</strong></p>
-        <pre><code>var GEMINI_API_KEY = "여기에_API키_입력";
-var BOT_TRIGGER = "봇아";
-var URL_REGEX = /https?:\/\/[^\s\)\]\"\']+/g;
-
-function response(room, msg, sender, isGroupChat, replier) {
-    if (sender === "이브레인봇") return;
-    var urls = msg.match(URL_REGEX);
-    if (urls && urls.length > 0) {
-        var url = urls[0].replace(/[.,;!?]$/, "");
-        var domain = getDomain(url);
-        var summary = summarizeUrl(url);
-        replier.reply(domain + "(" + url + ") 에 대한 사이트 요약입니다:\n\n" + summary);
-        return;
-    }
-    if (msg.startsWith(BOT_TRIGGER)) {
-        var question = msg.replace(BOT_TRIGGER, "").trim();
-        if (question.length === 0) {
-            replier.reply("네! 질문을 입력해주세요 😊");
-            return;
-        }
-        replier.reply(callGemini(question));
-        return;
-    }
-}
-
-function getDomain(url) {
-    try {
-        var match = url.match(/https?:\/\/(?:www\.)?([^\/]+)/);
-        return match ? match[1].split(".")[0] : "링크";
-    } catch (e) { return "링크"; }
-}
-
-function fetchUrl(url) {
-    try {
-        var conn = new java.net.URL(url).openConnection();
-        conn.setRequestMethod("GET");
-        conn.setRequestProperty("User-Agent", "Mozilla/5.0");
-        conn.setConnectTimeout(8000);
-        conn.setReadTimeout(8000);
-        conn.setInstanceFollowRedirects(true);
-        var reader = new java.io.BufferedReader(new java.io.InputStreamReader(conn.getInputStream(), "UTF-8"));
-        var result = ""; var line; var count = 0;
-        while ((line = reader.readLine()) !== null && count < 200) { result += line + "\n"; count++; }
-        reader.close();
-        result = result.replace(/&lt;[^&gt;]*&gt;/g, " ").replace(/\s+/g, " ").trim();
-        if (result.length > 3000) result = result.substring(0, 3000);
-        return result;
-    } catch (e) { return ""; }
-}
-
-function summarizeUrl(url) {
-    var pageContent = fetchUrl(url);
-    if (pageContent.length > 100) {
-        return callGemini("다음 웹페이지 내용을 한국어로 3~4줄 요약해줘.\n형식:\n👉[페이지 제목]\n이모지 + 핵심 내용\n이모지 + 핵심 내용\n이모지 + 핵심 내용\n\n내용:\n" + pageContent);
-    }
-    return "URL에 접근할 수 없습니다.\n직접 확인해 보시기 바랍니다.\nURL: " + url;
-}
-
-function callGemini(prompt) {
-    try {
-        var apiUrl = "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=" + GEMINI_API_KEY;
-        var body = JSON.stringify({contents:[{parts:[{text:prompt}]}]});
-        var conn = new java.net.URL(apiUrl).openConnection();
-        conn.setRequestMethod("POST");
-        conn.setRequestProperty("Content-Type", "application/json; charset=UTF-8");
-        conn.setDoOutput(true);
-        conn.setConnectTimeout(15000);
-        conn.setReadTimeout(20000);
-        var writer = new java.io.OutputStreamWriter(conn.getOutputStream(), "UTF-8");
-        writer.write(body); writer.flush(); writer.close();
-        var code = conn.getResponseCode();
-        var stream = code >= 400 ? conn.getErrorStream() : conn.getInputStream();
-        var reader = new java.io.BufferedReader(new java.io.InputStreamReader(stream, "UTF-8"));
-        var result = ""; var line;
-        while ((line = reader.readLine()) !== null) { result += line; }
-        reader.close();
-        if (code >= 400) return "API 오류 " + code + ": " + result.substring(0, 200);
-        return JSON.parse(result).candidates[0].content.parts[0].text;
-    } catch (e) { return "오류: " + e.message; }
-}</code></pre>
-    </div>
-
-    <div class="step-box">
-        <div class="step-num">Step 4</div>
-        <h3>저장 및 활성화</h3>
-        <ol>
-            <li>우측 상단 <strong>저장</strong> 클릭</li>
-            <li>봇 목록에서 <strong>스위치 ON</strong></li>
-            <li>상단 알림 아이콘이 <strong>초록색</strong>인지 확인</li>
-        </ol>
-    </div>
-
-    <div class="step-box">
-        <div class="step-num">Step 5</div>
-        <h3>채팅방 초대 및 테스트</h3>
-        <ol>
-            <li>카카오톡 부계정을 오픈채팅방에 초대</li>
-            <li>채팅방에 URL 하나 붙여넣기</li>
-            <li>봇이 자동으로 요약 답변 → <strong>성공 ✅</strong></li>
-        </ol>
-        <div class="tip-box">
-            <strong>💡 테스트 URL:</strong> <code>https://www.youtube.com/watch?v=Oaw0mrzZOsY</code>
-        </div>
-    </div>
-
-    <hr>
-
-    <h2>🎮 사용법</h2>
-
-    <table>
-        <thead><tr><th>입력 방식</th><th>동작</th><th>예시</th></tr></thead>
-        <tbody>
-            <tr><td><strong>URL 붙여넣기</strong></td><td>자동 요약</td><td>https://example.com</td></tr>
-            <tr><td><strong>봇아 + 질문</strong></td><td>AI 답변</td><td>봇아 오늘 날씨 어때?</td></tr>
-        </tbody>
-    </table>
-
-    <hr>
-
-    <h2>⚠️ 주의사항</h2>
-
+    <h3>URL 요약 잘 되는 사이트</h3>
     <ul>
-        <li>카카오톡 이용약관상 자동화 봇은 제재 가능 → <strong>비공개/소규모 채팅방</strong> 권장</li>
-        <li>안드로이드 기기 <strong>절전 모드 해제</strong> 필수</li>
-        <li>카카오톡 업데이트 후 알림 권한 재확인 필요</li>
-        <li>Gemini 무료 티어: 분당 15회 요청 제한</li>
+        <li>✅ 유튜브, 뉴스 기사, 블로그, GitHub 레포</li>
+        <li>✅ 제품 상세페이지, 쇼핑몰, 랜딩페이지</li>
+        <li>⚠️ 로그인 필요 페이지 — 요약 불가</li>
+        <li>⚠️ 이미지만 있는 URL — 텍스트 추출 제한</li>
     </ul>
+
+    <hr>
+
+    <h2>🔧 자주 쓰는 명령어 모음</h2>
+
+    <div class="cmd-box">
+        <div class="cmd-label">이커머스</div>
+        <div class="cmd-text">/이브레인봇 쿠팡 키워드 [상품명] 상위노출 전략
+/이브레인봇 [상품] 타겟 고객 페르소나 분석
+/이브레인봇 경쟁사 대비 차별화 포인트 찾는 방법
+/이브레인봇 스마트스토어 리뷰 답변 템플릿 만들어줘</div>
+    </div>
+
+    <div class="cmd-box">
+        <div class="cmd-label">AI 도구 활용</div>
+        <div class="cmd-text">/이브레인봇 Claude Code로 할 수 있는 일 알려줘
+/이브레인봇 Gemini API 무료 티어 한도는?
+/이브레인봇 ChatGPT 프롬프트 잘 쓰는 방법
+/이브레인봇 AI 이미지 생성 무료 툴 추천</div>
+    </div>
+
+    <div class="cmd-box">
+        <div class="cmd-label">콘텐츠·마케팅</div>
+        <div class="cmd-text">/이브레인봇 유튜브 썸네일 클릭률 높이는 방법
+/이브레인봇 [키워드] 블로그 글 아웃라인 짜줘
+/이브레인봇 인스타그램 팔로워 늘리는 2026년 전략
+/이브레인봇 이메일 제목 클릭률 높이는 방법 5가지</div>
+    </div>
 
     <hr>
 
     <h2>❓ FAQ</h2>
 
-    <h4>Q. 봇이 응답하지 않아요</h4>
-    <p>① 메신저봇R 알림 아이콘 초록색 확인 ② 카카오톡 알림 설정 확인 ③ 봇 스위치 ON 확인</p>
+    <h3>Q. 봇이 응답하지 않아요</h3>
+    <p>봇 운영 기기(안드로이드)가 켜져 있어야 합니다. 절전 모드 또는 앱이 종료된 경우 응답이 없을 수 있습니다.</p>
 
-    <h4>Q. API 오류가 납니다</h4>
-    <p>Google AI Studio에서 API 키 재발급 후 교체. Gemini 2.5 이상 모델만 신규 키에서 동작합니다.</p>
+    <h3>Q. 답변이 너무 짧거나 모호해요</h3>
+    <p>질문에 <strong>타겟, 상황, 원하는 형식</strong>을 추가하세요. "구체적으로", "단계별로", "예시 포함해서" 같은 지시어도 효과적입니다.</p>
 
-    <h4>Q. 폰을 꺼도 되나요?</h4>
-    <p>안됩니다. 봇이 실행 중인 폰은 항상 켜져 있어야 합니다. 충전기에 연결해두세요.</p>
+    <h3>Q. URL 요약이 안 돼요</h3>
+    <p>로그인이 필요한 페이지나 JavaScript로만 로딩되는 페이지는 요약이 불가합니다. 뉴스·유튜브·블로그 등 공개 페이지에서 잘 동작합니다.</p>
 
-    <h4>Q. 아이폰에서도 됩니까?</h4>
-    <p>메신저봇R은 안드로이드 전용입니다. iOS 불가.</p>
+    <h3>Q. 한 번에 여러 질문을 할 수 있나요?</h3>
+    <p>한 번에 하나씩 질문하는 게 가장 답변 품질이 좋습니다. 질문을 구체적으로 하나로 좁혀서 입력하세요.</p>
 
     <div class="cta-box">
         <h2>🚀 더 많은 AI 활용법이 궁금하다면?</h2>
