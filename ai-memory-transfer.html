@@ -62,20 +62,33 @@
     <a href="index.html" class="back">← 가이드 목록으로</a>
 
     <!-- 상단 채널 배너 -->
-    <div style="background:var(--card);border:1px solid var(--border);border-radius:12px;padding:1rem 1.25rem;margin-bottom:1.5rem;display:flex;gap:0.75rem;flex-wrap:wrap;align-items:center;">
-        <span style="color:var(--muted);font-size:0.85rem;margin-right:0.25rem;">📢 채널</span>
-        <a href="https://www.youtube.com/@aiebrain" target="_blank"
-           style="display:inline-flex;align-items:center;gap:0.4rem;background:#ff0000;color:#fff;font-weight:600;font-size:0.85rem;padding:0.35rem 0.9rem;border-radius:99px;text-decoration:none;transition:opacity 0.2s;"
-           onmouseover="this.style.opacity='0.85'" onmouseout="this.style.opacity='1'">
-            ▶ 유튜브 구독
-        </a>
-        <a href="https://open.kakao.com/o/gfNHYBwh" target="_blank"
-           style="display:inline-flex;align-items:center;gap:0.4rem;background:#FAE100;color:#3A1D1D;font-weight:600;font-size:0.85rem;padding:0.35rem 0.9rem;border-radius:99px;text-decoration:none;transition:opacity 0.2s;"
-           onmouseover="this.style.opacity='0.85'" onmouseout="this.style.opacity='1'">
-            💬 오픈채팅방 참여
-        </a>
-        <span style="color:var(--muted);font-size:0.82rem;margin-left:auto;">AI 활용 실전 팁 공유 중</span>
+    <div style="background:linear-gradient(135deg,#0f1f0f 0%,#0f1a25 100%);border:1px solid var(--accent);border-radius:14px;padding:1.4rem 1.5rem;margin-bottom:1.75rem;">
+        <div style="display:flex;align-items:center;gap:0.5rem;margin-bottom:1rem;">
+            <span style="display:inline-block;width:8px;height:8px;background:var(--accent);border-radius:50%;animation:pulse 1.8s infinite;"></span>
+            <span style="color:var(--accent);font-size:0.8rem;font-weight:600;letter-spacing:0.05em;">AI 커머스 브레인 — 실전 AI 활용 커뮤니티</span>
+        </div>
+        <p style="color:var(--text);font-size:1rem;font-weight:600;margin-bottom:1.1rem;">
+            AI로 매출·생산성 올리는 셀러들이 모인 곳 👇
+        </p>
+        <div style="display:flex;gap:0.75rem;flex-wrap:wrap;">
+            <a href="https://www.youtube.com/@aiebrain" target="_blank"
+               style="display:inline-flex;align-items:center;gap:0.5rem;background:#ff0000;color:#fff;font-weight:700;font-size:0.95rem;padding:0.6rem 1.3rem;border-radius:10px;text-decoration:none;box-shadow:0 0 14px rgba(255,0,0,0.35);transition:all 0.2s;"
+               onmouseover="this.style.boxShadow='0 0 22px rgba(255,0,0,0.6)';this.style.transform='translateY(-1px)'" onmouseout="this.style.boxShadow='0 0 14px rgba(255,0,0,0.35)';this.style.transform='translateY(0)'">
+                ▶ 유튜브 구독하기
+            </a>
+            <a href="https://open.kakao.com/o/gfNHYBwh" target="_blank"
+               style="display:inline-flex;align-items:center;gap:0.5rem;background:#FAE100;color:#3A1D1D;font-weight:700;font-size:0.95rem;padding:0.6rem 1.3rem;border-radius:10px;text-decoration:none;box-shadow:0 0 14px rgba(250,225,0,0.3);transition:all 0.2s;"
+               onmouseover="this.style.boxShadow='0 0 22px rgba(250,225,0,0.55)';this.style.transform='translateY(-1px)'" onmouseout="this.style.boxShadow='0 0 14px rgba(250,225,0,0.3)';this.style.transform='translateY(0)'">
+                💬 오픈채팅방 참여
+            </a>
+        </div>
+        <p style="color:var(--muted);font-size:0.8rem;margin-top:0.9rem;margin-bottom:0;">
+            📌 가이드 질문·AI 활용 노하우 공유 · 무료 입장
+        </p>
     </div>
+    <style>
+        @keyframes pulse { 0%,100%{opacity:1;} 50%{opacity:0.3;} }
+    </style>
 
     <h1>🔄 AI 바꿀 때 기억 이전하는 법</h1>
 
